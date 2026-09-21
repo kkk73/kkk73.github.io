@@ -1,18 +1,318 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="尤钧的个人主页——聚焦 AI 芯片、处理器体系结构、数字 IC 与系统级设计空间探索。">
+  <meta name="theme-color" content="#07111f">
+  <meta property="og:title" content="尤钧 · IC Design &amp; Computer Architecture">
+  <meta property="og:description" content="AI 芯片、处理器体系结构、数字 IC 与系统级设计空间探索。">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/avatar.png">
+  <title>尤钧 · IC Design &amp; Computer Architecture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Noto+Sans+SC:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    /* === PERSONAL SITE BASE CSS === */
+    /* Include the FULL contents of this file in every generated site. */
+    /* Do NOT modify the core resets — only add to :root variables. */
+    :root {
+      /* Colors — override these per preset */
+      --bg: #faf8f5; --fg: #1a1a1a; --accent: #2563eb; --muted: #888; --surface: #fff; --border: #e8e4de;
+      /* Typography — override these per preset */
+      --font-display: 'Inter', sans-serif; --font-body: 'Inter', sans-serif; --font-mono: 'Fira Code', monospace;
+      /* Responsive sizes — do NOT use fixed px */
+      --title: clamp(2rem, 5vw, 4rem); --h2: clamp(1.5rem, 3vw, 2.5rem); --h3: clamp(1.1rem, 2vw, 1.5rem); --body: clamp(0.875rem, 1.2vw, 1.1rem); --small: clamp(0.75rem, 1vw, 0.875rem);
+      /* Spacing — responsive */
+      --space-xs: clamp(4px, 0.5vw, 8px); --space-sm: clamp(8px, 1vw, 16px); --space-md: clamp(16px, 2vw, 32px); --space-lg: clamp(32px, 4vw, 64px); --space-xl: clamp(48px, 8vw, 128px);
+      /* Layout */ --max-width: min(90vw, 800px);
+      /* Motion */ --ease: cubic-bezier(0.16, 1, 0.3, 1); --duration: 0.6s;
+    }
+    /* === RESET === */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); font-size: var(--body); color: var(--fg); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--accent); text-decoration: none; transition: color 0.2s ease; }
+    /* === SCROLL REVEAL === */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity var(--duration) var(--ease), transform var(--duration) var(--ease); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal:nth-child(2) { transition-delay: 0.1s; }
+    .reveal:nth-child(3) { transition-delay: 0.2s; }
+    .reveal:nth-child(4) { transition-delay: 0.3s; }
+    /* === ACCESSIBILITY === */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; scroll-behavior: auto !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+    /* === RESPONSIVE FOUNDATION === */
+    @media (max-width: 768px) { :root { --space-lg: clamp(24px, 3vw, 48px); --space-xl: clamp(32px, 5vw, 64px); } }
+
+    /* === Theme === */
+    :root {
+      --bg:#07111f; --fg:#e7eef8; --accent:#9eff3b; --accent-soft:#c8ff92; --muted:#8fa2ba;
+      --surface:#0b192a; --surface-strong:#102238; --border:#21364d; --shadow:rgba(0,0,0,.28); --overlay:rgba(3,9,17,.84);
+      --font-display:'Space Grotesk','Noto Sans SC',sans-serif; --font-body:'Noto Sans SC',sans-serif; --font-mono:'IBM Plex Mono',monospace;
+      --title:clamp(3.7rem,10vw,8.7rem); --h2:clamp(2rem,4vw,4rem); --h3:clamp(1.15rem,2vw,1.55rem); --body:clamp(.94rem,1.1vw,1.06rem); --small:clamp(.72rem,.95vw,.88rem); --max-width:min(94vw,1240px);
+    }
+    body { overflow-x:hidden; }
+    body::before { content:''; position:fixed; inset:0; z-index:-2; background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px); background-size:clamp(36px,5vw,72px) clamp(36px,5vw,72px); opacity:.16; mask-image:linear-gradient(to bottom,black,transparent 72%); }
+    body::after { content:''; position:fixed; inset:0; z-index:-1; pointer-events:none; background:radial-gradient(circle at 84% 8%,rgba(158,255,59,.08),transparent 28%); }
+    ::selection { color:var(--bg); background:var(--accent); }
+    .site-shell { width:var(--max-width); margin:auto; display:grid; grid-template-columns:minmax(250px,.72fr) minmax(0,1.72fr); gap:clamp(44px,7vw,116px); }
+    .content { min-width:0; }
+    .section { padding:var(--space-xl) 0; border-bottom:1px solid var(--border); scroll-margin-top:var(--space-md); }
+    .eyebrow,.section-index,.nav-link,.chip,.status,.metric-label,.meta { font-family:var(--font-mono); font-size:var(--small); letter-spacing:.08em; text-transform:uppercase; }
+    .eyebrow,.section-index,.metric-label { color:var(--accent); }
+    .section-heading { display:grid; grid-template-columns:minmax(66px,auto) 1fr; align-items:baseline; gap:var(--space-md); margin-bottom:var(--space-lg); }
+    .section-heading h2 { font:700 var(--h2)/1 var(--font-display); letter-spacing:-.045em; }
+    .section-heading::after { content:''; height:1px; background:var(--border); }
+    .skip-link { position:fixed; left:var(--space-sm); top:var(--space-sm); z-index:20; padding:var(--space-xs) var(--space-sm); color:var(--bg); background:var(--accent); transform:translateY(-160%); }
+    .skip-link:focus { transform:none; }
+
+    /* === SECTION: Basic Info === */
+    .basic-info { position:sticky; top:0; height:100vh; padding:clamp(30px,5vw,70px) 0; display:flex; flex-direction:column; justify-content:space-between; }
+    .identity { display:grid; gap:var(--space-md); }
+    .avatar-frame { width:clamp(92px,10vw,138px); aspect-ratio:1; overflow:hidden; border:1px solid var(--border); border-radius:clamp(18px,2vw,28px); background:var(--surface); box-shadow:10px 10px 0 var(--surface-strong); }
+    .avatar-frame img { width:100%; height:100%; object-fit:cover; object-position:73% center; transform:scale(1.45); filter:saturate(.86) contrast(1.04); }
+    .status { display:flex; align-items:center; gap:var(--space-xs); color:var(--accent-soft); }
+    .status::before { content:''; width:clamp(7px,.7vw,9px); height:clamp(7px,.7vw,9px); border-radius:50%; background:var(--accent); box-shadow:0 0 0 5px rgba(158,255,59,.1); }
+    .name { font:700 clamp(2.6rem,5vw,4.8rem)/.92 var(--font-display); letter-spacing:-.07em; }
+    .role { max-width:28ch; color:var(--muted); }
+    .sidebar-nav { display:grid; gap:var(--space-xs); }
+    .nav-link { width:fit-content; padding:var(--space-xs) 0; color:var(--muted); transition:color .25s var(--ease),transform .25s var(--ease); }
+    .nav-link::before { content:attr(data-index); color:var(--accent); margin-right:var(--space-sm); }
+    .nav-link:hover,.nav-link:focus-visible { color:var(--fg); transform:translateX(5px); }
+    .sidebar-actions { display:flex; flex-wrap:wrap; gap:var(--space-sm); }
+    .icon-link { width:clamp(42px,4vw,48px); aspect-ratio:1; display:grid; place-items:center; border:1px solid var(--border); border-radius:50%; color:var(--fg); background:var(--surface); transition:.25s var(--ease); }
+    .icon-link:hover,.icon-link:focus-visible { color:var(--accent); border-color:var(--accent); transform:translateY(-3px); }
+    .icon-link svg { width:44%; height:44%; }
+
+    /* === Components === */
+    .button { display:inline-flex; align-items:center; justify-content:center; gap:var(--space-xs); min-height:clamp(42px,4vw,50px); padding:var(--space-sm) var(--space-md); border:1px solid var(--accent); border-radius:999px; color:var(--bg); background:var(--accent); font:600 var(--small)/1 var(--font-mono); letter-spacing:.04em; cursor:pointer; transition:.25s var(--ease); }
+    .button:hover,.button:focus-visible { transform:translateY(-3px); background:var(--accent-soft); }
+    .button.secondary { color:var(--accent); background:transparent; }
+    .button.secondary:hover,.button.secondary:focus-visible { color:var(--bg); background:var(--accent); }
+
+    /* === SECTION: Hero === */
+    .hero { min-height:96vh; display:flex; flex-direction:column; justify-content:center; padding:var(--space-xl) 0; border-bottom:1px solid var(--border); }
+    .hero h1 { max-width:9.5ch; margin:var(--space-sm) 0 var(--space-md); font:700 var(--title)/.84 var(--font-display); letter-spacing:-.075em; }
+    .hero h1 span { color:var(--accent); }
+    .hero-copy { max-width:58ch; color:var(--muted); font-size:clamp(1rem,1.6vw,1.3rem); }
+    .hero-actions,.contact-links,.resume-actions { display:flex; flex-wrap:wrap; gap:var(--space-sm); margin-top:var(--space-lg); }
+    .signal-line { display:flex; align-items:center; gap:var(--space-sm); margin-top:var(--space-lg); color:var(--muted); font:var(--small) var(--font-mono); }
+    .signal-line::before { content:''; width:clamp(34px,6vw,92px); height:1px; background:var(--accent); }
+
+    /* === SECTION: About === */
+    .about-grid { display:grid; grid-template-columns:1.12fr .88fr; gap:var(--space-lg); align-items:start; }
+    .about-copy { display:grid; gap:var(--space-md); color:var(--muted); }
+    .about-copy strong { color:var(--fg); }
+    .metrics { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); border-top:1px solid var(--border); border-left:1px solid var(--border); }
+    .metric { min-height:clamp(112px,12vw,160px); padding:var(--space-md); border-right:1px solid var(--border); border-bottom:1px solid var(--border); background:rgba(11,25,42,.54); }
+    .metric-value { display:block; margin:var(--space-xs) 0; color:var(--fg); font:700 clamp(1.8rem,3.6vw,3.6rem)/1 var(--font-display); }
+    .metric-note { color:var(--muted); font-size:var(--small); }
+
+    /* === SECTION: Projects === */
+    .project-list:hover .project-card { opacity:.48; }
+    .project-list:hover .project-card:hover { opacity:1; }
+    .project-card { display:grid; grid-template-columns:clamp(64px,8vw,104px) 1fr; gap:var(--space-md); padding:var(--space-lg) 0; border-top:1px solid var(--border); transition:opacity .3s var(--ease),transform .3s var(--ease); }
+    .project-card:first-child { border-top:0; padding-top:0; }
+    .project-card:hover { transform:translateX(6px); }
+    .project-no,.project-date { color:var(--accent); font:var(--small) var(--font-mono); }
+    .project-title-row { display:flex; justify-content:space-between; gap:var(--space-md); }
+    .project-title { font:600 var(--h3)/1.25 var(--font-display); }
+    .project-date { flex:0 0 auto; color:var(--muted); }
+    .project-award { margin:var(--space-sm) 0; color:var(--accent-soft); font-size:var(--small); }
+    .project-desc,.project-points { color:var(--muted); }
+    .project-points { display:grid; gap:var(--space-xs); margin-top:var(--space-sm); padding-left:1.2em; }
+    .project-points li::marker { color:var(--accent); }
+    .tags { display:flex; flex-wrap:wrap; gap:var(--space-xs); margin-top:var(--space-md); }
+    .chip { padding:var(--space-xs) var(--space-sm); border:1px solid var(--border); border-radius:999px; color:var(--muted); background:var(--surface); text-transform:none; letter-spacing:.02em; }
+
+    /* === SECTION: Skills === */
+    .skill-groups { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--space-md); }
+    .skill-group { padding:var(--space-md); border:1px solid var(--border); background:rgba(11,25,42,.62); }
+    .skill-group h3 { margin-bottom:var(--space-sm); color:var(--accent-soft); font:500 var(--small)/1.4 var(--font-mono); text-transform:uppercase; letter-spacing:.08em; }
+    .skill-group p { color:var(--muted); }
+
+    /* === SECTION: Honors === */
+    .two-column { display:grid; grid-template-columns:1.25fr .75fr; gap:var(--space-lg); }
+    .honor-list { list-style:none; }
+    .honor-item { display:grid; grid-template-columns:clamp(58px,7vw,86px) 1fr; gap:var(--space-md); padding:var(--space-sm) 0; border-bottom:1px solid var(--border); }
+    .honor-year { color:var(--accent); font:var(--small) var(--font-mono); }
+    .education-card { position:relative; padding:var(--space-md); border:1px solid var(--border); background:var(--surface); overflow:hidden; }
+    .education-card::after { content:'NJUPT'; position:absolute; right:-.06em; bottom:-.25em; color:rgba(158,255,59,.06); font:700 clamp(3.6rem,7vw,7.8rem)/1 var(--font-display); }
+    .education-card h3 { position:relative; z-index:1; font:600 var(--h3)/1.3 var(--font-display); }
+    .education-card p { position:relative; z-index:1; margin-top:var(--space-xs); color:var(--muted); }
+
+    /* === SECTION: Resume === */
+    .resume-panel { display:grid; grid-template-columns:1fr auto; gap:var(--space-lg); align-items:center; padding:var(--space-lg); border:1px solid var(--accent); background:linear-gradient(135deg,var(--surface),var(--surface-strong)); }
+    .resume-panel h3 { margin:var(--space-xs) 0; font:600 var(--h3)/1.3 var(--font-display); }
+    .resume-panel p { max-width:60ch; color:var(--muted); }
+    .resume-actions { margin-top:0; justify-content:flex-end; }
+    .resume-dialog { width:min(94vw,1100px); height:min(92vh,900px); margin:auto; padding:0; border:1px solid var(--border); color:var(--fg); background:var(--surface); box-shadow:0 28px 90px var(--shadow); }
+    .resume-dialog::backdrop { background:var(--overlay); backdrop-filter:blur(8px); }
+    .dialog-bar { min-height:clamp(56px,6vw,72px); padding:var(--space-sm) var(--space-md); display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--border); }
+    .dialog-title { font:600 var(--h3)/1.2 var(--font-display); }
+    .dialog-close { width:clamp(36px,4vw,44px); aspect-ratio:1; border:1px solid var(--border); border-radius:50%; color:var(--fg); background:transparent; font-size:clamp(1.2rem,2vw,1.6rem); cursor:pointer; }
+    .dialog-close:hover { color:var(--accent); border-color:var(--accent); }
+    .resume-sheet { height:calc(100% - clamp(56px,6vw,72px)); padding:var(--space-lg); overflow:auto; background:#f5f2e9; color:#142033; }
+    .resume-sheet-header { display:flex; justify-content:space-between; align-items:flex-start; gap:var(--space-md); padding-bottom:var(--space-md); border-bottom:2px solid #142033; }
+    .resume-sheet-name { font:700 clamp(2rem,5vw,4rem)/1 var(--font-display); letter-spacing:-.05em; }
+    .resume-sheet-meta { color:#536173; font:var(--small)/1.7 var(--font-mono); text-align:right; }
+    .resume-sheet-grid { display:grid; grid-template-columns:.75fr 1.25fr; gap:var(--space-lg); padding-top:var(--space-lg); }
+    .resume-sheet section { padding-bottom:var(--space-md); }
+    .resume-sheet h3 { margin-bottom:var(--space-sm); color:#1f5f12; font:600 var(--small)/1.4 var(--font-mono); letter-spacing:.08em; text-transform:uppercase; }
+    .resume-sheet h4 { margin-bottom:var(--space-xs); font:700 var(--h3)/1.3 var(--font-display); }
+    .resume-sheet p,.resume-sheet li { color:#536173; font-size:var(--body); }
+    .resume-sheet ul { display:grid; gap:var(--space-xs); padding-left:1.2em; }
+    .sheet-project { padding:0 0 var(--space-md); margin-bottom:var(--space-md); border-bottom:1px solid #ccd1d6; }
+    .sheet-date { color:#1f5f12; font:var(--small) var(--font-mono); }
+    .sheet-download { margin-top:var(--space-md); color:#142033; border-color:#142033; }
+
+    /* === SECTION: Contact === */
+    .contact-copy { max-width:17ch; font:600 var(--h2)/1.04 var(--font-display); letter-spacing:-.04em; }
+    .footer { padding:var(--space-lg) 0; display:flex; justify-content:space-between; gap:var(--space-md); color:var(--muted); font:var(--small) var(--font-mono); }
+
+    @media (max-width:900px) {
+      .site-shell { display:block; width:min(90vw,760px); }
+      .basic-info { position:relative; height:auto; padding:var(--space-lg) 0 0; display:grid; grid-template-columns:1fr auto; gap:var(--space-md); align-items:end; }
+      .identity { grid-template-columns:auto 1fr; align-items:center; }
+      .identity .status { grid-column:1/-1; }
+      .sidebar-nav { display:none; }
+      .hero { min-height:78vh; }
+    }
+    @media (max-width:680px) {
+      .site-shell { width:min(91vw,560px); }
+      .basic-info { grid-template-columns:1fr; }
+      .sidebar-actions { position:absolute; right:0; top:var(--space-lg); flex-direction:column; }
+      .identity { grid-template-columns:auto minmax(0,1fr); padding-right:clamp(54px,14vw,72px); }
+      .identity .status { grid-column:1/-1; }
+      .name { font-size:clamp(2.4rem,12vw,3.4rem); }
+      .role { font-size:var(--small); }
+      .hero { min-height:72vh; }
+      .hero h1 { font-size:clamp(3.3rem,18vw,5.6rem); }
+      .about-grid,.two-column,.skill-groups,.resume-panel,.resume-sheet-grid { grid-template-columns:1fr; }
+      .resume-sheet { padding:var(--space-md); }
+      .resume-sheet-header { display:grid; }
+      .resume-sheet-meta { text-align:left; }
+      .project-card { grid-template-columns:1fr; gap:var(--space-sm); }
+      .project-title-row { display:grid; }
+      .resume-panel { padding:var(--space-md); }
+      .resume-actions { justify-content:flex-start; }
+      .footer { display:grid; }
+    }
+  </style>
 </head>
 <body>
-    <h1> My Blog</h1>
-    <p> Hello, I'am sapphiresql, welcome to my blog site</p>
-  	<p> The first one sharing is to slove the problem about vivado(2022.2,wsl2,ubuntu24.04LTS). it's spinning around at connecting to hw_server</p>
-  	<p> how to deal with it?</p>
-  	<p> open the Tcl console</p>
-  	<p> type in "set_param labtools.enable_cs_server false"</p>
-  	<p> what's frustrating is that every time i want open vivado,i need to type that again</p>
-  	<p> tips:cs_server is not necessary in many cases,unless u need high speed data channel for debugging</p>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <div class="site-shell">
+    <!-- === Basic Info === -->
+    <aside class="basic-info" aria-label="基本信息">
+      <div class="identity reveal">
+        <figure class="avatar-frame"><img src="assets/avatar.png" alt="尤钧的个人头像"></figure>
+        <div><p class="name">尤钧</p><p class="role">集成电路设计与集成系统 · 南京邮电大学</p></div>
+        <p class="status">Open to research &amp; collaboration</p>
+      </div>
+      <nav class="sidebar-nav" aria-label="页面导航">
+        <a class="nav-link" data-index="01" href="#about">关于</a><a class="nav-link" data-index="02" href="#projects">项目</a><a class="nav-link" data-index="03" href="#skills">能力</a><a class="nav-link" data-index="04" href="#honors">荣誉</a><a class="nav-link" data-index="05" href="#resume">简历</a><a class="nav-link" data-index="06" href="#contact">联系</a>
+      </nav>
+      <div class="sidebar-actions">
+        <a class="icon-link" href="https://github.com/kkk73" target="_blank" rel="noopener noreferrer" aria-label="访问 GitHub 主页"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .7a11.6 11.6 0 0 0-3.67 22.6c.58.1.79-.25.79-.56v-2.03c-3.23.7-3.91-1.37-3.91-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.77 2.72 1.26 3.38.96.1-.75.4-1.26.74-1.55-2.58-.29-5.29-1.29-5.29-5.74 0-1.27.45-2.3 1.2-3.11-.12-.3-.52-1.48.11-3.07 0 0 .98-.32 3.2 1.19a11.05 11.05 0 0 1 5.82 0c2.22-1.51 3.2-1.19 3.2-1.19.63 1.6.23 2.78.11 3.07.75.81 1.2 1.84 1.2 3.11 0 4.46-2.72 5.44-5.3 5.73.42.36.79 1.07.79 2.16v3.2c0 .31.21.67.8.56A11.6 11.6 0 0 0 12 .7Z"/></svg></a>
+        <a class="icon-link" href="mailto:b24030711@njupt.edu.cn" aria-label="发送邮件"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 5h18v14H3z"/><path d="m3 6 9 7 9-7"/></svg></a>
+      </div>
+    </aside>
+
+    <main id="main" class="content">
+      <!-- === Hero === -->
+      <header class="hero">
+        <p class="eyebrow reveal">IC DESIGN · MICROARCHITECTURE · DSE</p>
+        <h1 class="reveal">BUILDING<br><span>SILICON.</span></h1>
+        <p class="hero-copy reveal">我关注 AI 芯片与处理器体系结构，从 RTL 数据通路到中后端实现，也在探索访存、互联与系统级设计空间。</p>
+        <div class="hero-actions reveal"><a class="button" href="#projects">查看项目 ↘</a><button class="button secondary" type="button" data-open-resume>在线简历</button></div>
+        <p class="signal-line reveal">CURRENTLY · 南京邮电大学 · 本科三年级</p>
+      </header>
+
+      <!-- === About === -->
+      <section id="about" class="section">
+        <div class="section-heading reveal"><span class="section-index">01</span><h2>关于我</h2></div>
+        <div class="about-grid">
+          <div class="about-copy reveal"><p>就读于南京邮电大学集成电路科学与工程学院（产教融合学院），专业为<strong>集成电路设计与集成系统</strong>，预计 2028 年夏毕业。</p><p>我喜欢把抽象架构真正落到可验证、可实现的硬件上：使用 gem5 做体系结构建模与性能分析，用 SystemVerilog / Verilog / Chisel 完成数字设计，并通过 DC、ICC2、PrimeTime 与 PrimePower 推进 PPA 闭环。</p></div>
+          <div class="metrics reveal" aria-label="关键指标"><div class="metric"><span class="metric-label">Peak result</span><strong class="metric-value">2.5×</strong><span class="metric-note">相对 OpenLA500</span></div><div class="metric"><span class="metric-label">Efficiency</span><strong class="metric-value">6.018</strong><span class="metric-note">TOPS/W</span></div><div class="metric"><span class="metric-label">Frequency</span><strong class="metric-value">150</strong><span class="metric-note">MHz · SMIC 40 nm</span></div><div class="metric"><span class="metric-label">National</span><strong class="metric-value">6</strong><span class="metric-note">项国家级奖项</span></div></div>
+        </div>
+      </section>
+
+      <!-- === Projects === -->
+      <section id="projects" class="section">
+        <div class="section-heading reveal"><span class="section-index">02</span><h2>项目经历</h2></div>
+        <div class="project-list">
+          <article class="project-card reveal"><span class="project-no">01 / ASIC</span><div><div class="project-title-row"><h3 class="project-title">面向蜂鸟 E203 SoC 的 Transformer 加速芯片</h3><time class="project-date">2025.08—11</time></div><p class="project-award">全国大学生嵌入式芯片与系统设计竞赛 · 芯片设计赛道 · 国家一等奖</p><ul class="project-points"><li>SMIC 40 nm，1.5 × 1.4 mm²，150 MHz，6.018 TOPS/W，支持 DDR4 与 INT8 Transformer 计算。</li><li>参与 DMA、脉动阵列前端模块；独立完成综合、物理实现、时序与功耗分析。</li></ul><div class="tags"><span class="chip">E203</span><span class="chip">INT8</span><span class="chip">Systolic Array</span><span class="chip">DC / ICC2</span></div></div></article>
+          <article class="project-card reveal"><span class="project-no">02 / CPU</span><div><div class="project-title-row"><h3 class="project-title">LoongArch32 双发射乱序 CPU</h3><time class="project-date">2026.06—08</time></div><p class="project-award">2026 龙芯杯团体赛</p><p class="project-desc">单人完成双发射乱序 CPU 核，通过全部功能测试并完成 U-Boot 启动；相对 OpenLA500 达到 2.5×。</p><div class="tags"><span class="chip">LoongArch32</span><span class="chip">Out-of-Order</span><span class="chip">Dual Issue</span><span class="chip">U-Boot</span></div></div></article>
+          <article class="project-card reveal"><span class="project-no">03 / FPGA</span><div><div class="project-title-row"><h3 class="project-title">多声部分离、自动扒谱与演奏纠错系统</h3><time class="project-date">2026.09—至今</time></div><p class="project-award">FPGA 大赛 · 安路赛道</p><p class="project-desc">覆盖多声部分离、音符级转录、演奏纠错与谱面输出；将 Conv2D、ReLU、Sigmoid 等核心算子在 PL 侧定点化并流式实现。</p><div class="tags"><span class="chip">FPGA</span><span class="chip">Audio ML</span><span class="chip">Fixed Point</span><span class="chip">Streaming</span></div></div></article>
+          <article class="project-card reveal"><span class="project-no">04 / SOC</span><div><div class="project-title-row"><h3 class="project-title">基于 M0 内核的 81 阶 FIR 滤波 SoC</h3><time class="project-date">2026</time></div><p class="project-award">四邮四电 ICT</p><p class="project-desc">基于 M0 内核构建 SoC 并集成 81 阶 FIR 滤波模块，实现处理器控制与硬件数字滤波模块的片上协同。</p><div class="tags"><span class="chip">Cortex-M0</span><span class="chip">FIR</span><span class="chip">SoC Integration</span></div></div></article>
+        </div>
+      </section>
+
+      <!-- === Skills === -->
+      <section id="skills" class="section">
+        <div class="section-heading reveal"><span class="section-index">03</span><h2>专业能力</h2></div>
+        <div class="skill-groups"><article class="skill-group reveal"><h3>Architecture &amp; Modeling</h3><p>gem5、处理器与 AI 加速器建模、性能分析、设计空间探索（DSE）。</p></article><article class="skill-group reveal"><h3>Digital IC</h3><p>SystemVerilog、Verilog、Chisel；数字 IC 中后端实现与 UVM 验证方法学。</p></article><article class="skill-group reveal"><h3>Compute &amp; DSP</h3><p>NPU / MAC 数据通路、脉动阵列、FIR 等 DSP 算子与定点化设计。</p></article><article class="skill-group reveal"><h3>Toolchain</h3><p>Verilator、Icarus Verilog、GTKWave、DC、ICC2、PrimeTime、PrimePower、Vivado、TD。</p></article></div>
+      </section>
+
+      <!-- === Honors === -->
+      <section id="honors" class="section">
+        <div class="section-heading reveal"><span class="section-index">04</span><h2>荣誉与教育</h2></div>
+        <div class="two-column"><ul class="honor-list reveal"><li class="honor-item"><span class="honor-year">2025</span><span>嵌赛芯片设计大赛 · 国家一等奖 · 2 / 15844</span></li><li class="honor-item"><span class="honor-year">2025</span><span>嵌赛 FPGA 大赛（安路赛道）· 国家一等奖</span></li><li class="honor-item"><span class="honor-year">2026</span><span>西门子杯嵌入式设计赛道 · 国家一等奖 · 15 / 13524</span></li><li class="honor-item"><span class="honor-year">2026</span><span>嵌赛芯片应用大赛（ST 赛道）· 国家二等奖</span></li><li class="honor-item"><span class="honor-year">2026</span><span>瑞萨杯 · 国家二等奖</span></li><li class="honor-item"><span class="honor-year">2026</span><span>英特尔杯 · 国家三等奖</span></li></ul><article class="education-card reveal"><p class="eyebrow">Education</p><h3>南京邮电大学</h3><p>集成电路科学与工程学院<br>集成电路设计与集成系统</p><p>本科三年级 · 预计 2028 年夏毕业</p></article></div>
+      </section>
+
+      <!-- === Resume === -->
+      <section id="resume" class="section">
+        <div class="section-heading reveal"><span class="section-index">05</span><h2>简历</h2></div>
+        <div class="resume-panel reveal"><div><p class="eyebrow">Résumé / PDF</p><h3>完整经历，一页查看</h3><p>直接在网页中查看最新版 PDF，也可以下载留存。网站使用的是副本，原始简历文件未做任何修改。</p></div><div class="resume-actions"><button class="button" type="button" data-open-resume>在线查看</button><a class="button secondary" href="assets/resume-you-jun.pdf" download>下载 PDF</a></div></div>
+      </section>
+
+      <!-- === Contact === -->
+      <section id="contact" class="section"><div class="section-heading reveal"><span class="section-index">06</span><h2>联系</h2></div><p class="contact-copy reveal">一起讨论处理器、AI 芯片，或者下一个有意思的硬件项目。</p><div class="contact-links reveal"><a class="button" href="mailto:b24030711@njupt.edu.cn">b24030711@njupt.edu.cn</a><a class="button secondary" href="https://github.com/kkk73" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></section>
+      <footer class="footer"><span>© <span id="year">2026</span> 尤钧</span><span>Designed for silicon, systems &amp; ideas.</span></footer>
+    </main>
+  </div>
+
+  <!-- === Resume Dialog === -->
+  <dialog class="resume-dialog" id="resume-dialog" aria-labelledby="resume-dialog-title">
+    <div class="dialog-bar"><h2 class="dialog-title" id="resume-dialog-title">尤钧 · 个人简历</h2><button class="dialog-close" type="button" data-close-resume aria-label="关闭简历">×</button></div>
+    <div class="resume-sheet">
+      <header class="resume-sheet-header"><div><h3>Résumé</h3><p class="resume-sheet-name">尤钧</p></div><p class="resume-sheet-meta">南京邮电大学 · 集成电路设计与集成系统<br>b24030711@njupt.edu.cn · 预计 2028 年毕业</p></header>
+      <div class="resume-sheet-grid">
+        <div>
+          <section><h3>教育背景</h3><h4>南京邮电大学</h4><p>集成电路科学与工程学院（产教融合学院）<br>本科三年级</p></section>
+          <section><h3>专业能力</h3><ul><li>gem5 与体系结构建模</li><li>SystemVerilog / Verilog / Chisel</li><li>数字 IC 中后端实现</li><li>NPU / MAC 与 DSP 算子</li><li>DC / ICC2 / PT / PrimePower</li></ul></section>
+          <section><h3>竞赛荣誉</h3><ul><li>国家一等奖 × 3</li><li>国家二等奖 × 2</li><li>国家三等奖 × 1</li></ul><a class="button secondary sheet-download" href="assets/resume-you-jun.pdf" target="_blank" rel="noopener">打开原版 PDF ↗</a></section>
+        </div>
+        <div>
+          <section><h3>项目经历</h3>
+            <article class="sheet-project"><span class="sheet-date">2025.08—11</span><h4>面向蜂鸟 E203 SoC 的 Transformer 加速芯片</h4><p>SMIC 40 nm，150 MHz，6.018 TOPS/W；参与 DMA、脉动阵列设计，独立完成综合、物理实现、时序与功耗分析。</p></article>
+            <article class="sheet-project"><span class="sheet-date">2026.06—08</span><h4>LoongArch32 双发射乱序 CPU</h4><p>单人完成并通过全部功能测试，完成 U-Boot 启动，性能相对 OpenLA500 达到 2.5×。</p></article>
+            <article class="sheet-project"><span class="sheet-date">2026.09—至今</span><h4>多声部分离、自动扒谱与演奏纠错系统</h4><p>围绕 Conv2D、ReLU、Sigmoid 等算子进行 FPGA PL 侧定点化与流式实现。</p></article>
+            <article class="sheet-project"><span class="sheet-date">2026</span><h4>基于 M0 内核的 81 阶 FIR 滤波 SoC</h4><p>实现处理器控制与硬件数字滤波模块的片上协同。</p></article>
+          </section>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- === Interaction === -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const items = document.querySelectorAll('.reveal');
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) items.forEach(item => item.classList.add('visible'));
+      else { const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }), { threshold:.1, rootMargin:'0px 0px -50px 0px' }); items.forEach(item => observer.observe(item)); }
+      const dialog = document.querySelector('#resume-dialog');
+      document.querySelectorAll('[data-open-resume]').forEach(button => button.addEventListener('click', () => dialog.showModal()));
+      document.querySelector('[data-close-resume]').addEventListener('click', () => dialog.close());
+      dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+      document.querySelector('#year').textContent = new Date().getFullYear();
+    });
+  </script>
 </body>
 </html>
