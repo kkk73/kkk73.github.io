@@ -54,6 +54,7 @@
       --bg:#061426; --fg:#edf5ff; --accent:#5aa9ff; --accent-soft:#a6d3ff; --muted:#b5c3d4;
       --surface:rgba(8,30,55,.4); --surface-strong:rgba(10,38,70,.56); --border:rgba(165,207,255,.28); --shadow:rgba(0,0,0,.34); --overlay:rgba(3,18,37,.5);
       --glass:rgba(5,25,48,.32); --glass-strong:rgba(5,28,52,.5); --glass-shine:rgba(218,238,255,.2); --image-filter:saturate(.96) contrast(1.04) brightness(.98);
+      --resume-paper:#081a2f; --resume-ink:#edf5ff; --resume-muted:#b5c3d4; --resume-rule:rgba(165,207,255,.26); --resume-accent:#5aa9ff;
       --font-display:'Space Grotesk','Noto Sans SC',sans-serif; --font-body:'Noto Sans SC',sans-serif; --font-mono:'IBM Plex Mono',monospace;
       --title:clamp(3rem,6vw,6.4rem); --h2:clamp(1.55rem,2.5vw,2.5rem); --h3:clamp(1.02rem,1.5vw,1.32rem); --body:clamp(.86rem,.9vw,.98rem); --small:clamp(.68rem,.78vw,.8rem); --max-width:min(95vw,1420px);
       --space-md:clamp(14px,1.5vw,24px); --space-lg:clamp(24px,2.6vw,40px); --space-xl:clamp(38px,4.5vw,68px);
@@ -62,7 +63,10 @@
       --bg:#e9dfcc; --fg:#30261e; --accent:#9b4e28; --accent-soft:#6f351d; --muted:#695d52;
       --surface:rgba(247,239,222,.46); --surface-strong:rgba(231,213,184,.58); --border:rgba(82,57,37,.25); --shadow:rgba(58,40,24,.23); --overlay:rgba(239,224,197,.52);
       --glass:rgba(246,235,214,.36); --glass-strong:rgba(244,229,203,.54); --glass-shine:rgba(255,255,255,.58); --image-filter:sepia(.36) saturate(.78) contrast(.96) brightness(1.02);
+      --resume-paper:#f1e6d2; --resume-ink:#30261e; --resume-muted:#695d52; --resume-rule:rgba(82,57,37,.24); --resume-accent:#9b4e28;
     }
+    html { color-scheme:dark; }
+    html[data-theme="warm"] { color-scheme:light; }
     body { overflow-x:hidden; background:var(--bg); transition:color .35s var(--ease),background .35s var(--ease); }
     body::before { content:''; position:fixed; inset:0; z-index:-2; background:url('assets/background.png') center/cover no-repeat; filter:var(--image-filter); transform:scale(1.02); }
     body::after { content:''; position:fixed; inset:0; z-index:-1; pointer-events:none; background:radial-gradient(circle at 82% 10%,color-mix(in srgb,var(--accent) 18%,transparent),transparent 28%),linear-gradient(var(--overlay),var(--overlay)); }
@@ -86,7 +90,7 @@
     .avatar-frame { width:clamp(82px,7vw,108px); aspect-ratio:1; overflow:hidden; border:1px solid var(--border); border-radius:clamp(16px,1.6vw,24px); background:var(--surface); box-shadow:8px 8px 0 var(--surface-strong); }
     .avatar-frame img { width:100%; height:100%; object-fit:cover; object-position:73% center; transform:scale(1.45); filter:saturate(.86) contrast(1.04); }
     .status { display:flex; align-items:center; gap:var(--space-xs); color:var(--accent-soft); }
-    .status::before { content:''; width:clamp(7px,.7vw,9px); height:clamp(7px,.7vw,9px); border-radius:50%; background:var(--accent); box-shadow:0 0 0 5px rgba(158,255,59,.1); }
+    .status::before { content:''; width:clamp(7px,.7vw,9px); height:clamp(7px,.7vw,9px); border-radius:50%; background:var(--accent); box-shadow:0 0 0 5px color-mix(in srgb,var(--accent) 12%,transparent); }
     .name { max-width:100%; font:700 clamp(1.8rem,2.35vw,2.4rem)/.96 var(--font-display); letter-spacing:-.055em; white-space:nowrap; }
     .real-name { margin-top:var(--space-xs); color:var(--muted); font:500 var(--small)/1.4 var(--font-mono); letter-spacing:.12em; }
     .role { max-width:28ch; color:var(--muted); }
@@ -160,7 +164,7 @@
     .honor-item { display:grid; grid-template-columns:clamp(46px,4vw,58px) 1fr; gap:var(--space-sm); padding:var(--space-xs) 0; border-bottom:1px solid var(--border); }
     .honor-year { color:var(--accent); font:var(--small) var(--font-mono); }
     .education-card { position:relative; padding:var(--space-md); border:1px solid var(--border); border-radius:clamp(16px,1.6vw,24px); background:var(--surface); box-shadow:inset 0 1px 0 var(--glass-shine); overflow:hidden; }
-    .education-card::after { content:'NJUPT'; position:absolute; right:-.06em; bottom:-.25em; color:rgba(158,255,59,.06); font:700 clamp(3.6rem,7vw,7.8rem)/1 var(--font-display); }
+    .education-card::after { content:'NJUPT'; position:absolute; right:-.06em; bottom:-.25em; color:color-mix(in srgb,var(--accent) 7%,transparent); font:700 clamp(3.6rem,7vw,7.8rem)/1 var(--font-display); }
     .education-card h3 { position:relative; z-index:1; font:600 var(--h3)/1.3 var(--font-display); }
     .education-card p { position:relative; z-index:1; margin-top:var(--space-xs); color:var(--muted); }
 
@@ -169,25 +173,25 @@
     .resume-panel h3 { margin:var(--space-xs) 0; font:600 var(--h3)/1.3 var(--font-display); }
     .resume-panel p { max-width:60ch; color:var(--muted); }
     .resume-actions { margin-top:0; justify-content:flex-end; }
-    .resume-dialog { width:min(94vw,1100px); height:min(92vh,900px); margin:auto; padding:0; border:1px solid var(--border); color:var(--fg); background:var(--surface); box-shadow:0 28px 90px var(--shadow); }
+    .resume-dialog { width:min(94vw,1100px); height:min(92vh,900px); margin:auto; padding:0; border:1px solid var(--border); color:var(--resume-ink); background:var(--resume-paper); box-shadow:0 28px 90px var(--shadow); transition:color .35s var(--ease),background .35s var(--ease),border-color .35s var(--ease); }
     .resume-dialog::backdrop { background:var(--overlay); backdrop-filter:blur(8px); }
     .dialog-bar { min-height:clamp(56px,6vw,72px); padding:var(--space-sm) var(--space-md); display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--border); }
     .dialog-title { font:600 var(--h3)/1.2 var(--font-display); }
     .dialog-close { width:clamp(36px,4vw,44px); aspect-ratio:1; border:1px solid var(--border); border-radius:50%; color:var(--fg); background:transparent; font-size:clamp(1.2rem,2vw,1.6rem); cursor:pointer; }
     .dialog-close:hover { color:var(--accent); border-color:var(--accent); }
-    .resume-sheet { height:calc(100% - clamp(56px,6vw,72px)); padding:var(--space-lg); overflow:auto; background:#f5f2e9; color:#142033; }
-    .resume-sheet-header { display:flex; justify-content:space-between; align-items:flex-start; gap:var(--space-md); padding-bottom:var(--space-md); border-bottom:2px solid #142033; }
+    .resume-sheet { height:calc(100% - clamp(56px,6vw,72px)); padding:var(--space-lg); overflow:auto; background:var(--resume-paper); color:var(--resume-ink); }
+    .resume-sheet-header { display:flex; justify-content:space-between; align-items:flex-start; gap:var(--space-md); padding-bottom:var(--space-md); border-bottom:2px solid var(--resume-ink); }
     .resume-sheet-name { font:700 clamp(2rem,5vw,4rem)/1 var(--font-display); letter-spacing:-.05em; }
-    .resume-sheet-meta { color:#536173; font:var(--small)/1.7 var(--font-mono); text-align:right; }
+    .resume-sheet-meta { color:var(--resume-muted); font:var(--small)/1.7 var(--font-mono); text-align:right; }
     .resume-sheet-grid { display:grid; grid-template-columns:.75fr 1.25fr; gap:var(--space-lg); padding-top:var(--space-lg); }
     .resume-sheet section { padding-bottom:var(--space-md); }
-    .resume-sheet h3 { margin-bottom:var(--space-sm); color:#1f5f12; font:600 var(--small)/1.4 var(--font-mono); letter-spacing:.08em; text-transform:uppercase; }
+    .resume-sheet h3 { margin-bottom:var(--space-sm); color:var(--resume-accent); font:600 var(--small)/1.4 var(--font-mono); letter-spacing:.08em; text-transform:uppercase; }
     .resume-sheet h4 { margin-bottom:var(--space-xs); font:700 var(--h3)/1.3 var(--font-display); }
-    .resume-sheet p,.resume-sheet li { color:#536173; font-size:var(--body); }
+    .resume-sheet p,.resume-sheet li { color:var(--resume-muted); font-size:var(--body); }
     .resume-sheet ul { display:grid; gap:var(--space-xs); padding-left:1.2em; }
-    .sheet-project { padding:0 0 var(--space-md); margin-bottom:var(--space-md); border-bottom:1px solid #ccd1d6; }
-    .sheet-date { color:#1f5f12; font:var(--small) var(--font-mono); }
-    .sheet-download { margin-top:var(--space-md); color:#142033; border-color:#142033; }
+    .sheet-project { padding:0 0 var(--space-md); margin-bottom:var(--space-md); border-bottom:1px solid var(--resume-rule); }
+    .sheet-date { color:var(--resume-accent); font:var(--small) var(--font-mono); }
+    .sheet-download { margin-top:var(--space-md); color:var(--resume-accent); border-color:var(--resume-accent); }
 
     /* === SECTION: Contact === */
     .contact-copy { max-width:none; font:600 var(--h3)/1.3 var(--font-display); letter-spacing:-.02em; }
@@ -269,7 +273,7 @@
           <div class="about-copy reveal">
             <p>南京邮电大学集成电路设计与集成系统专业，预计 2028 年毕业。</p>
             <div class="focus-block">
-              <p class="focus-label">Research Focus / 研究方向</p>
+              <p class="focus-label">Expected Research Focus / 期望研究方向</p>
               <ul class="focus-list">
                 <li><strong>AI 芯片 / 处理器体系结构</strong><span>关注处理器与 AI 加速器的计算架构、数据通路、算子映射及软硬件协同。</span></li>
                 <li><strong>Microarchitecture</strong><span>探索流水线、乱序执行、调度与资源组织对 IPC、频率和能效的影响。</span></li>
