@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="尤钧的个人主页——聚焦 AI 芯片、处理器体系结构、数字 IC 与系统级设计空间探索。">
-  <meta name="theme-color" content="#07111f">
-  <meta property="og:title" content="尤钧 · IC Design &amp; Computer Architecture">
+  <meta name="theme-color" id="theme-color" content="#07111f">
+  <meta property="og:title" content="Sapphire Sql · IC Design &amp; Computer Architecture">
   <meta property="og:description" content="AI 芯片、处理器体系结构、数字 IC 与系统级设计空间探索。">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/avatar.png">
-  <title>尤钧 · IC Design &amp; Computer Architecture</title>
+  <title>Sapphire Sql · IC Design &amp; Computer Architecture</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Noto+Sans+SC:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
@@ -51,18 +51,25 @@
 
     /* === Theme === */
     :root {
-      --bg:#07111f; --fg:#e7eef8; --accent:#9eff3b; --accent-soft:#c8ff92; --muted:#8fa2ba;
-      --surface:#0b192a; --surface-strong:#102238; --border:#21364d; --shadow:rgba(0,0,0,.28); --overlay:rgba(3,9,17,.84);
+      --bg:#07111f; --fg:#e7eef8; --accent:#9eff3b; --accent-soft:#c8ff92; --muted:#a8b7ca;
+      --surface:rgba(8,24,41,.52); --surface-strong:rgba(12,35,58,.68); --border:rgba(191,220,255,.2); --shadow:rgba(0,0,0,.38); --overlay:rgba(2,12,24,.7);
+      --glass:rgba(6,21,38,.46); --glass-strong:rgba(7,23,41,.68); --glass-shine:rgba(255,255,255,.16); --image-filter:saturate(.84) contrast(1.05);
       --font-display:'Space Grotesk','Noto Sans SC',sans-serif; --font-body:'Noto Sans SC',sans-serif; --font-mono:'IBM Plex Mono',monospace;
       --title:clamp(3rem,6vw,6.4rem); --h2:clamp(1.55rem,2.5vw,2.5rem); --h3:clamp(1.02rem,1.5vw,1.32rem); --body:clamp(.86rem,.9vw,.98rem); --small:clamp(.68rem,.78vw,.8rem); --max-width:min(95vw,1420px);
       --space-md:clamp(14px,1.5vw,24px); --space-lg:clamp(24px,2.6vw,40px); --space-xl:clamp(38px,4.5vw,68px);
     }
-    body { overflow-x:hidden; }
-    body::before { content:''; position:fixed; inset:0; z-index:-2; background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px); background-size:clamp(36px,5vw,72px) clamp(36px,5vw,72px); opacity:.16; mask-image:linear-gradient(to bottom,black,transparent 72%); }
-    body::after { content:''; position:fixed; inset:0; z-index:-1; pointer-events:none; background:radial-gradient(circle at 84% 8%,rgba(158,255,59,.08),transparent 28%); }
+    [data-theme="warm"] {
+      --bg:#e9dfcc; --fg:#30261e; --accent:#9b4e28; --accent-soft:#6f351d; --muted:#695d52;
+      --surface:rgba(247,239,222,.58); --surface-strong:rgba(231,213,184,.72); --border:rgba(82,57,37,.22); --shadow:rgba(58,40,24,.26); --overlay:rgba(239,224,197,.69);
+      --glass:rgba(246,235,214,.5); --glass-strong:rgba(244,229,203,.72); --glass-shine:rgba(255,255,255,.62); --image-filter:sepia(.45) saturate(.72) contrast(.94) brightness(1.04);
+    }
+    body { overflow-x:hidden; background:var(--bg); transition:color .35s var(--ease),background .35s var(--ease); }
+    body::before { content:''; position:fixed; inset:0; z-index:-2; background:url('assets/background.png') center/cover no-repeat; filter:var(--image-filter); transform:scale(1.02); }
+    body::after { content:''; position:fixed; inset:0; z-index:-1; pointer-events:none; background:radial-gradient(circle at 82% 10%,color-mix(in srgb,var(--accent) 18%,transparent),transparent 28%),linear-gradient(var(--overlay),var(--overlay)); }
     ::selection { color:var(--bg); background:var(--accent); }
-    .site-shell { width:var(--max-width); margin:auto; display:grid; grid-template-columns:minmax(210px,.55fr) minmax(0,2.45fr); gap:clamp(32px,4vw,64px); }
-    .content { min-width:0; }
+    .site-shell { width:var(--max-width); margin:auto; display:grid; grid-template-columns:minmax(230px,.58fr) minmax(0,2.42fr); gap:clamp(18px,2vw,30px); }
+    .content { min-width:0; margin:clamp(12px,1.4vw,20px) 0; overflow:hidden; border:1px solid var(--border); border-radius:clamp(24px,2.5vw,38px); background:linear-gradient(135deg,var(--glass-shine),transparent 22%),var(--glass); box-shadow:0 24px 80px var(--shadow),inset 0 1px 0 var(--glass-shine); backdrop-filter:blur(28px) saturate(145%); -webkit-backdrop-filter:blur(28px) saturate(145%); }
+    .content > .hero,.content > .section,.content > .footer { padding-left:var(--space-lg); padding-right:var(--space-lg); }
     .section { padding:var(--space-xl) 0; border-bottom:1px solid var(--border); scroll-margin-top:var(--space-md); }
     .eyebrow,.section-index,.nav-link,.chip,.status,.metric-label,.meta { font-family:var(--font-mono); font-size:var(--small); letter-spacing:.08em; text-transform:uppercase; }
     .eyebrow,.section-index,.metric-label { color:var(--accent); }
@@ -73,32 +80,37 @@
     .skip-link:focus { transform:none; }
 
     /* === SECTION: Basic Info === */
-    .basic-info { position:sticky; top:0; height:100vh; padding:clamp(24px,3vw,44px) 0; display:flex; flex-direction:column; justify-content:space-between; }
+    .basic-info { position:sticky; top:clamp(12px,1.4vw,20px); height:calc(100vh - clamp(24px,2.8vw,40px)); margin:clamp(12px,1.4vw,20px) 0; padding:var(--space-md); display:flex; flex-direction:column; justify-content:space-between; overflow:hidden; border:1px solid var(--border); border-radius:clamp(24px,2.5vw,38px); background:linear-gradient(145deg,var(--glass-shine),transparent 28%),var(--glass-strong); box-shadow:0 24px 80px var(--shadow),inset 0 1px 0 var(--glass-shine); backdrop-filter:blur(30px) saturate(155%); -webkit-backdrop-filter:blur(30px) saturate(155%); }
+    .basic-info::after { content:''; position:absolute; width:clamp(120px,13vw,190px); aspect-ratio:1; right:-34%; bottom:8%; border-radius:44% 56% 63% 37% / 44% 42% 58% 56%; background:color-mix(in srgb,var(--accent) 16%,transparent); filter:blur(18px); pointer-events:none; }
     .identity { display:grid; gap:var(--space-sm); }
     .avatar-frame { width:clamp(82px,7vw,108px); aspect-ratio:1; overflow:hidden; border:1px solid var(--border); border-radius:clamp(16px,1.6vw,24px); background:var(--surface); box-shadow:8px 8px 0 var(--surface-strong); }
     .avatar-frame img { width:100%; height:100%; object-fit:cover; object-position:73% center; transform:scale(1.45); filter:saturate(.86) contrast(1.04); }
     .status { display:flex; align-items:center; gap:var(--space-xs); color:var(--accent-soft); }
     .status::before { content:''; width:clamp(7px,.7vw,9px); height:clamp(7px,.7vw,9px); border-radius:50%; background:var(--accent); box-shadow:0 0 0 5px rgba(158,255,59,.1); }
-    .name { font:700 clamp(2.2rem,3.8vw,3.5rem)/.92 var(--font-display); letter-spacing:-.07em; }
+    .name { font:700 clamp(2rem,3vw,3rem)/.92 var(--font-display); letter-spacing:-.065em; white-space:nowrap; }
+    .real-name { margin-top:var(--space-xs); color:var(--muted); font:500 var(--small)/1.4 var(--font-mono); letter-spacing:.12em; }
     .role { max-width:28ch; color:var(--muted); }
     .sidebar-nav { display:grid; gap:var(--space-xs); }
     .nav-link { width:fit-content; padding:var(--space-xs) 0; color:var(--muted); transition:color .25s var(--ease),transform .25s var(--ease); }
     .nav-link::before { content:attr(data-index); color:var(--accent); margin-right:var(--space-sm); }
     .nav-link:hover,.nav-link:focus-visible { color:var(--fg); transform:translateX(5px); }
     .sidebar-actions { display:flex; flex-wrap:wrap; gap:var(--space-sm); }
+    .theme-switcher { position:relative; z-index:1; display:grid; grid-template-columns:1fr 1fr; gap:var(--space-xs); padding:var(--space-xs); border:1px solid var(--border); border-radius:999px; background:color-mix(in srgb,var(--surface-strong) 72%,transparent); box-shadow:inset 0 1px 0 var(--glass-shine); }
+    .theme-button { min-width:0; padding:var(--space-xs) var(--space-sm); border:0; border-radius:999px; color:var(--muted); background:transparent; font:500 var(--small)/1.2 var(--font-mono); cursor:pointer; transition:.25s var(--ease); }
+    .theme-button[aria-pressed="true"] { color:var(--bg); background:var(--accent); box-shadow:0 5px 18px color-mix(in srgb,var(--accent) 28%,transparent); }
     .icon-link { width:clamp(42px,4vw,48px); aspect-ratio:1; display:grid; place-items:center; border:1px solid var(--border); border-radius:50%; color:var(--fg); background:var(--surface); transition:.25s var(--ease); }
     .icon-link:hover,.icon-link:focus-visible { color:var(--accent); border-color:var(--accent); transform:translateY(-3px); }
     .icon-link svg { width:44%; height:44%; }
 
     /* === Components === */
-    .button { display:inline-flex; align-items:center; justify-content:center; gap:var(--space-xs); min-height:clamp(42px,4vw,50px); padding:var(--space-sm) var(--space-md); border:1px solid var(--accent); border-radius:999px; color:var(--bg); background:var(--accent); font:600 var(--small)/1 var(--font-mono); letter-spacing:.04em; cursor:pointer; transition:.25s var(--ease); }
+    .button { display:inline-flex; align-items:center; justify-content:center; gap:var(--space-xs); min-height:clamp(42px,4vw,50px); padding:var(--space-sm) var(--space-md); border:1px solid color-mix(in srgb,var(--accent) 75%,var(--glass-shine)); border-radius:999px; color:var(--bg); background:var(--accent); box-shadow:inset 0 1px 0 var(--glass-shine),0 8px 24px color-mix(in srgb,var(--accent) 18%,transparent); font:600 var(--small)/1 var(--font-mono); letter-spacing:.04em; cursor:pointer; transition:.25s var(--ease); }
     .button:hover,.button:focus-visible { transform:translateY(-3px); background:var(--accent-soft); }
     .button.secondary { color:var(--accent); background:transparent; }
     .button.secondary:hover,.button.secondary:focus-visible { color:var(--bg); background:var(--accent); }
 
     /* === SECTION: Hero === */
     .hero { min-height:auto; display:flex; flex-direction:column; justify-content:center; padding:clamp(64px,8vh,96px) 0 var(--space-xl); border-bottom:1px solid var(--border); }
-    .hero h1 { max-width:none; white-space:nowrap; margin:var(--space-sm) 0 var(--space-md); font:700 var(--title)/.88 var(--font-display); letter-spacing:-.065em; }
+    .hero h1 { max-width:none; white-space:nowrap; margin:var(--space-sm) 0 var(--space-md); font:700 var(--title)/.88 var(--font-display); letter-spacing:-.065em; text-shadow:0 10px 35px var(--shadow); }
     .hero h1 span { color:var(--accent); }
     .hero-copy { max-width:72ch; color:var(--muted); font-size:clamp(.95rem,1.2vw,1.14rem); }
     .hero-actions,.contact-links,.resume-actions { display:flex; flex-wrap:wrap; gap:var(--space-sm); margin-top:var(--space-md); }
@@ -106,19 +118,15 @@
     .signal-line::before { content:''; width:clamp(34px,6vw,92px); height:1px; background:var(--accent); }
 
     /* === SECTION: About === */
-    .about-grid { display:grid; grid-template-columns:.95fr 1.45fr; gap:var(--space-lg); align-items:stretch; }
+    .about-grid { display:block; }
     .about-copy { display:grid; gap:var(--space-sm); color:var(--muted); }
     .about-copy strong { color:var(--fg); }
-    .metrics { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border-top:1px solid var(--border); border-left:1px solid var(--border); }
-    .metric { min-height:clamp(90px,8vw,116px); padding:var(--space-sm); border-right:1px solid var(--border); border-bottom:1px solid var(--border); background:rgba(11,25,42,.54); }
-    .metric-value { display:block; margin:var(--space-xs) 0; color:var(--fg); font:700 clamp(1.5rem,2.4vw,2.5rem)/1 var(--font-display); white-space:nowrap; }
-    .metric-note { color:var(--muted); font-size:var(--small); }
 
     /* === SECTION: Projects === */
     .project-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--space-md); }
     .project-list:hover .project-card { opacity:.55; }
     .project-list:hover .project-card:hover { opacity:1; }
-    .project-card { display:block; padding:var(--space-md); border:1px solid var(--border); background:rgba(11,25,42,.5); transition:opacity .3s var(--ease),transform .3s var(--ease),border-color .3s var(--ease); }
+    .project-card { display:block; padding:var(--space-md); border:1px solid var(--border); border-radius:clamp(16px,1.6vw,24px); background:linear-gradient(145deg,var(--glass-shine),transparent 34%),var(--surface); box-shadow:inset 0 1px 0 var(--glass-shine); backdrop-filter:blur(18px) saturate(135%); -webkit-backdrop-filter:blur(18px) saturate(135%); transition:opacity .3s var(--ease),transform .3s var(--ease),border-color .3s var(--ease); }
     .project-card:first-child { padding-top:var(--space-md); }
     .project-card:hover { transform:translateY(-4px); border-color:var(--accent); }
     .project-no { display:block; margin-bottom:var(--space-sm); }
@@ -135,7 +143,7 @@
 
     /* === SECTION: Skills === */
     .skill-groups { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:var(--space-sm); }
-    .skill-group { padding:var(--space-sm); border:1px solid var(--border); background:rgba(11,25,42,.62); }
+    .skill-group { padding:var(--space-sm); border:1px solid var(--border); border-radius:clamp(14px,1.3vw,20px); background:var(--surface); box-shadow:inset 0 1px 0 var(--glass-shine); }
     .skill-group h3 { margin-bottom:var(--space-sm); color:var(--accent-soft); font:500 var(--small)/1.4 var(--font-mono); text-transform:uppercase; letter-spacing:.08em; }
     .skill-group p { color:var(--muted); }
 
@@ -145,13 +153,13 @@
     .honor-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:var(--space-md); }
     .honor-item { display:grid; grid-template-columns:clamp(46px,4vw,58px) 1fr; gap:var(--space-sm); padding:var(--space-xs) 0; border-bottom:1px solid var(--border); }
     .honor-year { color:var(--accent); font:var(--small) var(--font-mono); }
-    .education-card { position:relative; padding:var(--space-md); border:1px solid var(--border); background:var(--surface); overflow:hidden; }
+    .education-card { position:relative; padding:var(--space-md); border:1px solid var(--border); border-radius:clamp(16px,1.6vw,24px); background:var(--surface); box-shadow:inset 0 1px 0 var(--glass-shine); overflow:hidden; }
     .education-card::after { content:'NJUPT'; position:absolute; right:-.06em; bottom:-.25em; color:rgba(158,255,59,.06); font:700 clamp(3.6rem,7vw,7.8rem)/1 var(--font-display); }
     .education-card h3 { position:relative; z-index:1; font:600 var(--h3)/1.3 var(--font-display); }
     .education-card p { position:relative; z-index:1; margin-top:var(--space-xs); color:var(--muted); }
 
     /* === SECTION: Resume === */
-    .resume-panel { display:grid; grid-template-columns:1fr auto; gap:var(--space-md); align-items:center; padding:var(--space-md); border:1px solid var(--accent); background:linear-gradient(135deg,var(--surface),var(--surface-strong)); }
+    .resume-panel { display:grid; grid-template-columns:1fr auto; gap:var(--space-md); align-items:center; padding:var(--space-md); border:1px solid var(--accent); border-radius:clamp(16px,1.6vw,24px); background:linear-gradient(135deg,var(--glass-shine),transparent 32%),var(--surface-strong); box-shadow:inset 0 1px 0 var(--glass-shine); }
     .resume-panel h3 { margin:var(--space-xs) 0; font:600 var(--h3)/1.3 var(--font-display); }
     .resume-panel p { max-width:60ch; color:var(--muted); }
     .resume-actions { margin-top:0; justify-content:flex-end; }
@@ -180,11 +188,13 @@
     .footer { padding:var(--space-lg) 0; display:flex; justify-content:space-between; gap:var(--space-md); color:var(--muted); font:var(--small) var(--font-mono); }
 
     @media (max-width:900px) {
-      .site-shell { display:block; width:min(90vw,760px); }
-      .basic-info { position:relative; height:auto; padding:var(--space-lg) 0 0; display:grid; grid-template-columns:1fr auto; gap:var(--space-md); align-items:end; }
+      .site-shell { display:block; width:min(94vw,760px); }
+      .content { margin:var(--space-sm) 0; }
+      .basic-info { position:relative; top:auto; height:auto; margin:var(--space-sm) 0; padding:var(--space-md); display:grid; grid-template-columns:1fr auto; gap:var(--space-md); align-items:end; }
       .identity { grid-template-columns:auto 1fr; align-items:center; }
       .identity .status { grid-column:1/-1; }
       .sidebar-nav { display:none; }
+      .theme-switcher { grid-column:1/-1; width:min(100%,320px); }
       .hero { min-height:auto; padding-top:var(--space-xl); }
       .skill-groups { grid-template-columns:repeat(2,minmax(0,1fr)); }
     }
@@ -192,9 +202,10 @@
       .site-shell { width:min(91vw,560px); }
       .basic-info { grid-template-columns:1fr; }
       .sidebar-actions { position:absolute; right:0; top:var(--space-lg); flex-direction:column; }
-      .identity { grid-template-columns:auto minmax(0,1fr); padding-right:clamp(54px,14vw,72px); }
+      .identity { grid-template-columns:auto minmax(0,1fr); padding-right:clamp(46px,12vw,58px); }
       .identity .status { grid-column:1/-1; }
-      .name { font-size:clamp(2.4rem,12vw,3.4rem); }
+      .avatar-frame { width:clamp(64px,18vw,76px); }
+      .name { font-size:clamp(1.55rem,7.2vw,1.9rem); letter-spacing:-.055em; }
       .role { font-size:var(--small); }
       .hero { min-height:auto; }
       .hero h1 { white-space:normal; font-size:clamp(3rem,16vw,4.8rem); }
@@ -218,8 +229,12 @@
     <aside class="basic-info" aria-label="基本信息">
       <div class="identity reveal">
         <figure class="avatar-frame"><img src="assets/avatar.png" alt="尤钧的个人头像"></figure>
-        <div><p class="name">尤钧</p><p class="role">集成电路设计 · 南京邮电大学</p></div>
+        <div><p class="name">Sapphire Sql</p><p class="real-name">尤钧 · YOU JUN</p><p class="role">集成电路设计 · 南京邮电大学</p></div>
         <p class="status">Open to research &amp; collaboration</p>
+      </div>
+      <div class="theme-switcher" role="group" aria-label="网站配色">
+        <button class="theme-button" type="button" data-theme-choice="blue" aria-pressed="true">蓝黑</button>
+        <button class="theme-button" type="button" data-theme-choice="warm" aria-pressed="false">褐色米白</button>
       </div>
       <nav class="sidebar-nav" aria-label="页面导航">
         <a class="nav-link" data-index="01" href="#about">关于</a><a class="nav-link" data-index="02" href="#projects">项目</a><a class="nav-link" data-index="03" href="#skills">能力</a><a class="nav-link" data-index="04" href="#honors">荣誉</a><a class="nav-link" data-index="05" href="#resume">简历</a><a class="nav-link" data-index="06" href="#contact">联系</a>
@@ -234,7 +249,7 @@
       <!-- === Hero === -->
       <header class="hero">
         <p class="eyebrow reveal">IC DESIGN · MICROARCHITECTURE · DSE</p>
-        <h1 class="reveal">BUILDING <span>SILICON.</span></h1>
+        <h1 class="reveal">Sapphire <span>Sql.</span></h1>
         <p class="hero-copy reveal">我关注 AI 芯片与处理器体系结构，从 RTL 数据通路到中后端实现，也在探索访存、互联与系统级设计空间。</p>
         <div class="hero-actions reveal"><a class="button" href="#projects">查看项目 ↘</a><button class="button secondary" type="button" data-open-resume>在线简历</button></div>
         <p class="signal-line reveal">CURRENTLY · 南京邮电大学 · 本科三年级</p>
@@ -243,10 +258,7 @@
       <!-- === About === -->
       <section id="about" class="section">
         <div class="section-heading reveal"><span class="section-index">01</span><h2>关于我</h2></div>
-        <div class="about-grid">
-          <div class="about-copy reveal"><p>南京邮电大学集成电路设计与集成系统专业，预计 2028 年毕业。聚焦<strong>处理器与 AI 加速器架构</strong>，从 gem5 建模、RTL 设计到 DC / ICC2 / PrimeTime / PrimePower 中后端分析，推动设计形成 PPA 闭环。</p></div>
-          <div class="metrics reveal" aria-label="关键指标"><div class="metric"><span class="metric-label">Peak result</span><strong class="metric-value">2.5×</strong><span class="metric-note">相对 OpenLA500</span></div><div class="metric"><span class="metric-label">Efficiency</span><strong class="metric-value">6.018</strong><span class="metric-note">TOPS/W</span></div><div class="metric"><span class="metric-label">Frequency</span><strong class="metric-value">150</strong><span class="metric-note">MHz · SMIC 40 nm</span></div><div class="metric"><span class="metric-label">National</span><strong class="metric-value">6</strong><span class="metric-note">项国家级奖项</span></div></div>
-        </div>
+        <div class="about-grid"><div class="about-copy reveal"><p>南京邮电大学集成电路设计与集成系统专业，预计 2028 年毕业。聚焦<strong>处理器与 AI 加速器架构</strong>，从 gem5 建模、RTL 设计到 DC / ICC2 / PrimeTime / PrimePower 中后端分析，推动设计形成 PPA 闭环。</p></div></div>
       </section>
 
       <!-- === Projects === -->
@@ -317,6 +329,19 @@
       document.querySelectorAll('[data-open-resume]').forEach(button => button.addEventListener('click', () => dialog.showModal()));
       document.querySelector('[data-close-resume]').addEventListener('click', () => dialog.close());
       dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+      const themeButtons = document.querySelectorAll('[data-theme-choice]');
+      const themeColor = document.querySelector('#theme-color');
+      const setTheme = theme => {
+        const selectedTheme = theme === 'warm' ? 'warm' : 'blue';
+        document.documentElement.dataset.theme = selectedTheme;
+        themeButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.themeChoice === selectedTheme)));
+        themeColor.setAttribute('content', selectedTheme === 'warm' ? '#e9dfcc' : '#07111f');
+        try { localStorage.setItem('portfolio-theme', selectedTheme); } catch (error) { /* Storage may be disabled. */ }
+      };
+      let savedTheme = 'blue';
+      try { savedTheme = localStorage.getItem('portfolio-theme') || 'blue'; } catch (error) { /* Use default. */ }
+      setTheme(savedTheme);
+      themeButtons.forEach(button => button.addEventListener('click', () => setTheme(button.dataset.themeChoice)));
       document.querySelector('#year').textContent = new Date().getFullYear();
     });
   </script>
