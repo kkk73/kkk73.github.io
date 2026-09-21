@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="尤钧的个人主页——聚焦 AI 芯片、处理器体系结构、数字 IC 与系统级设计空间探索。">
-  <meta name="theme-color" id="theme-color" content="#07111f">
+  <meta name="theme-color" id="theme-color" content="#061426">
   <meta property="og:title" content="Sapphire Sql · IC Design &amp; Computer Architecture">
   <meta property="og:description" content="AI 芯片、处理器体系结构、数字 IC 与系统级设计空间探索。">
   <meta property="og:type" content="website">
@@ -51,24 +51,24 @@
 
     /* === Theme === */
     :root {
-      --bg:#07111f; --fg:#e7eef8; --accent:#9eff3b; --accent-soft:#c8ff92; --muted:#a8b7ca;
-      --surface:rgba(8,24,41,.52); --surface-strong:rgba(12,35,58,.68); --border:rgba(191,220,255,.2); --shadow:rgba(0,0,0,.38); --overlay:rgba(2,12,24,.7);
-      --glass:rgba(6,21,38,.46); --glass-strong:rgba(7,23,41,.68); --glass-shine:rgba(255,255,255,.16); --image-filter:saturate(.84) contrast(1.05);
+      --bg:#061426; --fg:#edf5ff; --accent:#5aa9ff; --accent-soft:#a6d3ff; --muted:#b5c3d4;
+      --surface:rgba(8,30,55,.4); --surface-strong:rgba(10,38,70,.56); --border:rgba(165,207,255,.28); --shadow:rgba(0,0,0,.34); --overlay:rgba(3,18,37,.5);
+      --glass:rgba(5,25,48,.32); --glass-strong:rgba(5,28,52,.5); --glass-shine:rgba(218,238,255,.2); --image-filter:saturate(.96) contrast(1.04) brightness(.98);
       --font-display:'Space Grotesk','Noto Sans SC',sans-serif; --font-body:'Noto Sans SC',sans-serif; --font-mono:'IBM Plex Mono',monospace;
       --title:clamp(3rem,6vw,6.4rem); --h2:clamp(1.55rem,2.5vw,2.5rem); --h3:clamp(1.02rem,1.5vw,1.32rem); --body:clamp(.86rem,.9vw,.98rem); --small:clamp(.68rem,.78vw,.8rem); --max-width:min(95vw,1420px);
       --space-md:clamp(14px,1.5vw,24px); --space-lg:clamp(24px,2.6vw,40px); --space-xl:clamp(38px,4.5vw,68px);
     }
     [data-theme="warm"] {
       --bg:#e9dfcc; --fg:#30261e; --accent:#9b4e28; --accent-soft:#6f351d; --muted:#695d52;
-      --surface:rgba(247,239,222,.58); --surface-strong:rgba(231,213,184,.72); --border:rgba(82,57,37,.22); --shadow:rgba(58,40,24,.26); --overlay:rgba(239,224,197,.69);
-      --glass:rgba(246,235,214,.5); --glass-strong:rgba(244,229,203,.72); --glass-shine:rgba(255,255,255,.62); --image-filter:sepia(.45) saturate(.72) contrast(.94) brightness(1.04);
+      --surface:rgba(247,239,222,.46); --surface-strong:rgba(231,213,184,.58); --border:rgba(82,57,37,.25); --shadow:rgba(58,40,24,.23); --overlay:rgba(239,224,197,.52);
+      --glass:rgba(246,235,214,.36); --glass-strong:rgba(244,229,203,.54); --glass-shine:rgba(255,255,255,.58); --image-filter:sepia(.36) saturate(.78) contrast(.96) brightness(1.02);
     }
     body { overflow-x:hidden; background:var(--bg); transition:color .35s var(--ease),background .35s var(--ease); }
     body::before { content:''; position:fixed; inset:0; z-index:-2; background:url('assets/background.png') center/cover no-repeat; filter:var(--image-filter); transform:scale(1.02); }
     body::after { content:''; position:fixed; inset:0; z-index:-1; pointer-events:none; background:radial-gradient(circle at 82% 10%,color-mix(in srgb,var(--accent) 18%,transparent),transparent 28%),linear-gradient(var(--overlay),var(--overlay)); }
     ::selection { color:var(--bg); background:var(--accent); }
     .site-shell { width:var(--max-width); margin:auto; display:grid; grid-template-columns:minmax(230px,.58fr) minmax(0,2.42fr); gap:clamp(18px,2vw,30px); }
-    .content { min-width:0; margin:clamp(12px,1.4vw,20px) 0; overflow:hidden; border:1px solid var(--border); border-radius:clamp(24px,2.5vw,38px); background:linear-gradient(135deg,var(--glass-shine),transparent 22%),var(--glass); box-shadow:0 24px 80px var(--shadow),inset 0 1px 0 var(--glass-shine); backdrop-filter:blur(28px) saturate(145%); -webkit-backdrop-filter:blur(28px) saturate(145%); }
+    .content { min-width:0; margin:clamp(12px,1.4vw,20px) 0; overflow:hidden; border:1px solid var(--border); border-radius:clamp(24px,2.5vw,38px); background:linear-gradient(135deg,var(--glass-shine),transparent 22%),var(--glass); box-shadow:0 24px 80px var(--shadow),inset 0 1px 0 var(--glass-shine); backdrop-filter:blur(18px) saturate(132%); -webkit-backdrop-filter:blur(18px) saturate(132%); }
     .content > .hero,.content > .section,.content > .footer { padding-left:var(--space-lg); padding-right:var(--space-lg); }
     .section { padding:var(--space-xl) 0; border-bottom:1px solid var(--border); scroll-margin-top:var(--space-md); }
     .eyebrow,.section-index,.nav-link,.chip,.status,.metric-label,.meta { font-family:var(--font-mono); font-size:var(--small); letter-spacing:.08em; text-transform:uppercase; }
@@ -80,14 +80,14 @@
     .skip-link:focus { transform:none; }
 
     /* === SECTION: Basic Info === */
-    .basic-info { position:sticky; top:clamp(12px,1.4vw,20px); height:calc(100vh - clamp(24px,2.8vw,40px)); margin:clamp(12px,1.4vw,20px) 0; padding:var(--space-md); display:flex; flex-direction:column; justify-content:space-between; overflow:hidden; border:1px solid var(--border); border-radius:clamp(24px,2.5vw,38px); background:linear-gradient(145deg,var(--glass-shine),transparent 28%),var(--glass-strong); box-shadow:0 24px 80px var(--shadow),inset 0 1px 0 var(--glass-shine); backdrop-filter:blur(30px) saturate(155%); -webkit-backdrop-filter:blur(30px) saturate(155%); }
+    .basic-info { position:sticky; top:clamp(12px,1.4vw,20px); height:calc(100vh - clamp(24px,2.8vw,40px)); margin:clamp(12px,1.4vw,20px) 0; padding:var(--space-md); display:flex; flex-direction:column; justify-content:space-between; overflow:hidden; border:1px solid var(--border); border-radius:clamp(24px,2.5vw,38px); background:linear-gradient(145deg,var(--glass-shine),transparent 28%),var(--glass-strong); box-shadow:0 24px 80px var(--shadow),inset 0 1px 0 var(--glass-shine); backdrop-filter:blur(18px) saturate(138%); -webkit-backdrop-filter:blur(18px) saturate(138%); }
     .basic-info::after { content:''; position:absolute; width:clamp(120px,13vw,190px); aspect-ratio:1; right:-34%; bottom:8%; border-radius:44% 56% 63% 37% / 44% 42% 58% 56%; background:color-mix(in srgb,var(--accent) 16%,transparent); filter:blur(18px); pointer-events:none; }
     .identity { display:grid; gap:var(--space-sm); }
     .avatar-frame { width:clamp(82px,7vw,108px); aspect-ratio:1; overflow:hidden; border:1px solid var(--border); border-radius:clamp(16px,1.6vw,24px); background:var(--surface); box-shadow:8px 8px 0 var(--surface-strong); }
     .avatar-frame img { width:100%; height:100%; object-fit:cover; object-position:73% center; transform:scale(1.45); filter:saturate(.86) contrast(1.04); }
     .status { display:flex; align-items:center; gap:var(--space-xs); color:var(--accent-soft); }
     .status::before { content:''; width:clamp(7px,.7vw,9px); height:clamp(7px,.7vw,9px); border-radius:50%; background:var(--accent); box-shadow:0 0 0 5px rgba(158,255,59,.1); }
-    .name { font:700 clamp(2rem,3vw,3rem)/.92 var(--font-display); letter-spacing:-.065em; white-space:nowrap; }
+    .name { max-width:100%; font:700 clamp(1.8rem,2.35vw,2.4rem)/.96 var(--font-display); letter-spacing:-.055em; white-space:nowrap; }
     .real-name { margin-top:var(--space-xs); color:var(--muted); font:500 var(--small)/1.4 var(--font-mono); letter-spacing:.12em; }
     .role { max-width:28ch; color:var(--muted); }
     .sidebar-nav { display:grid; gap:var(--space-xs); }
@@ -121,12 +121,18 @@
     .about-grid { display:block; }
     .about-copy { display:grid; gap:var(--space-sm); color:var(--muted); }
     .about-copy strong { color:var(--fg); }
+    .focus-block { margin-top:var(--space-xs); padding:var(--space-md); border:1px solid var(--border); border-radius:clamp(16px,1.6vw,24px); background:linear-gradient(145deg,var(--glass-shine),transparent 30%),var(--surface); box-shadow:inset 0 1px 0 var(--glass-shine); }
+    .focus-label { margin-bottom:var(--space-sm); color:var(--accent); font:600 var(--small)/1.3 var(--font-mono); letter-spacing:.1em; text-transform:uppercase; }
+    .focus-list { display:grid; gap:var(--space-sm); list-style:none; }
+    .focus-list li { display:grid; grid-template-columns:minmax(210px,.72fr) minmax(0,1.28fr); gap:var(--space-md); padding-top:var(--space-sm); border-top:1px solid var(--border); }
+    .focus-list strong { color:var(--fg); font-weight:600; }
+    .focus-list span { color:var(--muted); }
 
     /* === SECTION: Projects === */
     .project-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--space-md); }
     .project-list:hover .project-card { opacity:.55; }
     .project-list:hover .project-card:hover { opacity:1; }
-    .project-card { display:block; padding:var(--space-md); border:1px solid var(--border); border-radius:clamp(16px,1.6vw,24px); background:linear-gradient(145deg,var(--glass-shine),transparent 34%),var(--surface); box-shadow:inset 0 1px 0 var(--glass-shine); backdrop-filter:blur(18px) saturate(135%); -webkit-backdrop-filter:blur(18px) saturate(135%); transition:opacity .3s var(--ease),transform .3s var(--ease),border-color .3s var(--ease); }
+    .project-card { display:block; padding:var(--space-md); border:1px solid var(--border); border-radius:clamp(16px,1.6vw,24px); background:linear-gradient(145deg,var(--glass-shine),transparent 34%),var(--surface); box-shadow:inset 0 1px 0 var(--glass-shine); backdrop-filter:blur(12px) saturate(125%); -webkit-backdrop-filter:blur(12px) saturate(125%); transition:opacity .3s var(--ease),transform .3s var(--ease),border-color .3s var(--ease); }
     .project-card:first-child { padding-top:var(--space-md); }
     .project-card:hover { transform:translateY(-4px); border-color:var(--accent); }
     .project-no { display:block; margin-bottom:var(--space-sm); }
@@ -212,6 +218,7 @@
       .about-grid,.two-column,.skill-groups,.resume-panel,.resume-sheet-grid,.project-list { grid-template-columns:1fr; }
       .metrics { grid-template-columns:repeat(2,minmax(0,1fr)); }
       .honor-list { grid-template-columns:1fr; }
+      .focus-list li { grid-template-columns:1fr; gap:var(--space-xs); }
       .resume-sheet { padding:var(--space-md); }
       .resume-sheet-header { display:grid; }
       .resume-sheet-meta { text-align:left; }
@@ -258,7 +265,21 @@
       <!-- === About === -->
       <section id="about" class="section">
         <div class="section-heading reveal"><span class="section-index">01</span><h2>关于我</h2></div>
-        <div class="about-grid"><div class="about-copy reveal"><p>南京邮电大学集成电路设计与集成系统专业，预计 2028 年毕业。聚焦<strong>处理器与 AI 加速器架构</strong>，从 gem5 建模、RTL 设计到 DC / ICC2 / PrimeTime / PrimePower 中后端分析，推动设计形成 PPA 闭环。</p></div></div>
+        <div class="about-grid">
+          <div class="about-copy reveal">
+            <p>南京邮电大学集成电路设计与集成系统专业，预计 2028 年毕业。</p>
+            <div class="focus-block">
+              <p class="focus-label">Research Focus / 研究方向</p>
+              <ul class="focus-list">
+                <li><strong>AI 芯片 / 处理器体系结构</strong><span>关注处理器与 AI 加速器的计算架构、数据通路、算子映射及软硬件协同。</span></li>
+                <li><strong>Microarchitecture</strong><span>探索流水线、乱序执行、调度与资源组织对 IPC、频率和能效的影响。</span></li>
+                <li><strong>访存与互联</strong><span>研究 Cache 层次、DDR / DMA、Scratchpad、片上互联以及带宽与延迟瓶颈。</span></li>
+                <li><strong>系统级设计空间探索（DSE）</strong><span>结合 gem5 与性能建模，在面积、功耗和性能约束下比较架构方案并形成 PPA 闭环。</span></li>
+              </ul>
+            </div>
+            <p>实现链路覆盖 gem5 建模、SystemVerilog / Verilog / Chisel RTL 设计，以及 DC、ICC2、PrimeTime、PrimePower 中后端分析。</p>
+          </div>
+        </div>
       </section>
 
       <!-- === Projects === -->
@@ -335,7 +356,7 @@
         const selectedTheme = theme === 'warm' ? 'warm' : 'blue';
         document.documentElement.dataset.theme = selectedTheme;
         themeButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.themeChoice === selectedTheme)));
-        themeColor.setAttribute('content', selectedTheme === 'warm' ? '#e9dfcc' : '#07111f');
+        themeColor.setAttribute('content', selectedTheme === 'warm' ? '#e9dfcc' : '#061426');
         try { localStorage.setItem('portfolio-theme', selectedTheme); } catch (error) { /* Storage may be disabled. */ }
       };
       let savedTheme = 'blue';
