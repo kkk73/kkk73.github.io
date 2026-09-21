@@ -251,7 +251,7 @@
         <button class="theme-button" type="button" data-theme-choice="warm" aria-pressed="false">褐色米白</button>
       </div>
       <nav class="sidebar-nav" aria-label="页面导航">
-        <a class="nav-link" data-index="01" href="#about">关于</a><a class="nav-link" data-index="02" href="#projects">项目</a><a class="nav-link" data-index="03" href="#skills">能力</a><a class="nav-link" data-index="04" href="#honors">荣誉</a><a class="nav-link" data-index="05" href="#resume">简历</a><a class="nav-link" data-index="06" href="#contact">联系</a>
+        <a class="nav-link" data-index="01" href="#about">关于</a><a class="nav-link" data-index="02" href="#skills">能力</a><a class="nav-link" data-index="03" href="#projects">项目</a><a class="nav-link" data-index="04" href="#honors">荣誉</a><a class="nav-link" data-index="05" href="#resume">简历</a><a class="nav-link" data-index="06" href="#contact">联系</a>
       </nav>
       <div class="sidebar-actions">
         <a class="icon-link" href="https://github.com/kkk73" target="_blank" rel="noopener noreferrer" aria-label="访问 GitHub 主页"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .7a11.6 11.6 0 0 0-3.67 22.6c.58.1.79-.25.79-.56v-2.03c-3.23.7-3.91-1.37-3.91-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.77 2.72 1.26 3.38.96.1-.75.4-1.26.74-1.55-2.58-.29-5.29-1.29-5.29-5.74 0-1.27.45-2.3 1.2-3.11-.12-.3-.52-1.48.11-3.07 0 0 .98-.32 3.2 1.19a11.05 11.05 0 0 1 5.82 0c2.22-1.51 3.2-1.19 3.2-1.19.63 1.6.23 2.78.11 3.07.75.81 1.2 1.84 1.2 3.11 0 4.46-2.72 5.44-5.3 5.73.42.36.79 1.07.79 2.16v3.2c0 .31.21.67.8.56A11.6 11.6 0 0 0 12 .7Z"/></svg></a>
@@ -289,21 +289,21 @@
         </div>
       </section>
 
+      <!-- === Skills === -->
+      <section id="skills" class="section">
+        <div class="section-heading reveal"><span class="section-index">02</span><h2>专业能力</h2></div>
+        <div class="skill-groups"><article class="skill-group reveal"><h3>Architecture &amp; Modeling</h3><p>gem5、处理器与 AI 加速器建模、性能分析、设计空间探索（DSE）。</p></article><article class="skill-group reveal"><h3>Digital IC</h3><p>SystemVerilog、Verilog、Chisel；数字 IC 中后端实现与 UVM 验证方法学。</p></article><article class="skill-group reveal"><h3>Compute &amp; DSP</h3><p>NPU / MAC 数据通路、脉动阵列、FIR 等 DSP 算子与定点化设计。</p></article><article class="skill-group reveal"><h3>Toolchain</h3><p>Verilator、Icarus Verilog、GTKWave、DC、ICC2、PrimeTime、PrimePower、Vivado、TD。</p></article></div>
+      </section>
+
       <!-- === Projects === -->
       <section id="projects" class="section">
-        <div class="section-heading reveal"><span class="section-index">02</span><h2>项目经历</h2></div>
+        <div class="section-heading reveal"><span class="section-index">03</span><h2>项目经历</h2></div>
         <div class="project-list">
           <article class="project-card reveal"><span class="project-no">01 / ASIC</span><div><div class="project-title-row"><h3 class="project-title">面向蜂鸟 E203 SoC 的 Transformer 加速芯片</h3><time class="project-date">2025.08—11</time></div><p class="project-award">全国大学生嵌入式芯片与系统设计竞赛 · 芯片设计赛道 · 国家一等奖</p><ul class="project-points"><li>SMIC 40 nm，1.5 × 1.4 mm²，150 MHz，6.018 TOPS/W，支持 DDR4 与 INT8 Transformer 计算。</li><li>参与 DMA、脉动阵列前端模块；独立完成综合、物理实现、时序与功耗分析。</li></ul><div class="tags"><span class="chip">E203</span><span class="chip">INT8</span><span class="chip">Systolic Array</span><span class="chip">DC / ICC2</span></div></div></article>
           <article class="project-card reveal"><span class="project-no">02 / CPU</span><div><div class="project-title-row"><h3 class="project-title">LoongArch32 双发射乱序 CPU</h3><time class="project-date">2026.06—08</time></div><p class="project-award">2026 龙芯杯团体赛</p><p class="project-desc">单人完成双发射乱序 CPU 核，通过全部功能测试并完成 U-Boot 启动；相对 OpenLA500 达到 2.5×。</p><div class="tags"><span class="chip">LoongArch32</span><span class="chip">Out-of-Order</span><span class="chip">Dual Issue</span><span class="chip">U-Boot</span></div></div></article>
           <article class="project-card reveal"><span class="project-no">03 / FPGA</span><div><div class="project-title-row"><h3 class="project-title">多声部分离、自动扒谱与演奏纠错系统</h3><time class="project-date">2026.09—至今</time></div><p class="project-award">FPGA 大赛 · 安路赛道</p><p class="project-desc">覆盖多声部分离、音符级转录、演奏纠错与谱面输出；将 Conv2D、ReLU、Sigmoid 等核心算子在 PL 侧定点化并流式实现。</p><div class="tags"><span class="chip">FPGA</span><span class="chip">Audio ML</span><span class="chip">Fixed Point</span><span class="chip">Streaming</span></div></div></article>
           <article class="project-card reveal"><span class="project-no">04 / SOC</span><div><div class="project-title-row"><h3 class="project-title">基于 M0 内核的 81 阶 FIR 滤波 SoC</h3><time class="project-date">2026</time></div><p class="project-award">四邮四电 ICT</p><p class="project-desc">基于 M0 内核构建 SoC 并集成 81 阶 FIR 滤波模块，实现处理器控制与硬件数字滤波模块的片上协同。</p><div class="tags"><span class="chip">Cortex-M0</span><span class="chip">FIR</span><span class="chip">SoC Integration</span></div></div></article>
         </div>
-      </section>
-
-      <!-- === Skills === -->
-      <section id="skills" class="section">
-        <div class="section-heading reveal"><span class="section-index">03</span><h2>专业能力</h2></div>
-        <div class="skill-groups"><article class="skill-group reveal"><h3>Architecture &amp; Modeling</h3><p>gem5、处理器与 AI 加速器建模、性能分析、设计空间探索（DSE）。</p></article><article class="skill-group reveal"><h3>Digital IC</h3><p>SystemVerilog、Verilog、Chisel；数字 IC 中后端实现与 UVM 验证方法学。</p></article><article class="skill-group reveal"><h3>Compute &amp; DSP</h3><p>NPU / MAC 数据通路、脉动阵列、FIR 等 DSP 算子与定点化设计。</p></article><article class="skill-group reveal"><h3>Toolchain</h3><p>Verilator、Icarus Verilog、GTKWave、DC、ICC2、PrimeTime、PrimePower、Vivado、TD。</p></article></div>
       </section>
 
       <!-- === Honors === -->
