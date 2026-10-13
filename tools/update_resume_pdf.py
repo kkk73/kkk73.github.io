@@ -40,10 +40,28 @@ page_height = float(page.mediabox.height)
 buffer = BytesIO()
 c = canvas.Canvas(buffer, pagesize=(page_width, page_height))
 
-# Education: use the blank right side of the major row, preserving the original layout.
+# Header and education: keep the original one-page structure.
+c.setFillColor(white)
+c.rect(39, 673, 518, 141, fill=1, stroke=0)
 c.setFillColor(black)
-c.setFont("ResumeSong", 9.6)
-c.drawRightString(552.8, 700, "专业绩点排名前 15% · 综合测评排名前 3%")
+c.setFont("ResumeBold", 20)
+c.drawString(42.5, 792, "尤钧")
+c.setFont("ResumeSong", 9.0)
+c.drawString(42.5, 775, "电话：13771530261    邮箱：b24030711@njupt.edu.cn    出生日期：2006/06/23")
+c.setLineWidth(0.8)
+c.line(42.5, 768, 552.8, 768)
+c.setFont("ResumeBold", 10.78)
+c.drawString(42.5, 750, "教育背景")
+c.setLineWidth(0.45)
+c.line(42.5, 744, 552.8, 744)
+c.setFont("ResumeSong", 10)
+c.drawString(42.5, 728, "南京邮电大学")
+c.drawRightString(552.8, 728, "预计 2028 年夏毕业")
+c.drawString(42.5, 713, "集成电路设计与集成系统")
+c.drawRightString(552.8, 713, "本科三年级")
+c.drawString(42.5, 698, "绩点排名：第 28 名    综合测评排名：前 3%")
+c.setFont("ResumeSong", 9.0)
+c.drawString(42.5, 684, "课程成绩：电路分析基础 98；数字电路 95；Verilog HDL 91；电工电子 A/B 均学分替代为优秀。")
 
 # Project 03: retain the original structure and update only the two bullet points.
 c.setFillColor(white)
@@ -89,7 +107,6 @@ for item in honors:
     honor_y -= 15.0
 
 c.line(42.5, 82, 552.8, 82)
-c.drawString(42.5, 60, "联系邮箱：b24030711@njupt.edu.cn")
 c.save()
 
 buffer.seek(0)
